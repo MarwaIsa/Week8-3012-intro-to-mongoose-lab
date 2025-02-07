@@ -33,11 +33,11 @@ console.log(`Your name is ${username}`);
 //  1. Create a customer
 async function createCustomer() {
     const newCustomer = {
-      name: "Mohamed",
-      age: 12
+      name: "Marwa",
+      age: 24
     }
     const createCustomer = await customer.create(newCustomer)
-    console.log("Create new customer: ", newCustomer)
+    console.log("Create new customer: ", createCustomer)
   }
 
 //   2. View all customers
@@ -50,7 +50,8 @@ async function getAllCustomer() {
 
 //   3. Update a customer
 async function updateCustomer() {
-    const updateCustomer = await Todo.findByIdAndUpdate('',{name:'/*  */ '},{age:/*  */})
+    //const updateCustomer = await customer.findByIdAndUpdate('6783ddc8915539ea4992032f',{name:'Salman'},{age:25})
+    const updateCustomer = await customer.updateOne({age:50},{age: 22})
     console.log(" Updated Customer : "+ updateCustomer)
   }
 
@@ -58,7 +59,18 @@ async function updateCustomer() {
 //   4. Delete a customer
 
 async function deleteOneCustomer() {
-    const deleteCustomer = await Todo.deleteOne({name:''})
+    //const deleteCustomer = await customer.deleteOne({name:''})
+    const deleteCustomer = await customer.findByIdAndDelete("67a68552c24279241ac11a38")
     console.log("Delete Customer: "+ deleteCustomer)
   }
 //   5. quit
+
+const runQueries = async () => {
+  console.log('Queries running.')
+  //await createCustomer()
+  await getAllCustomer();
+  await updateCustomer();
+  await deleteOneCustomer();
+
+};
+connect()
